@@ -13,6 +13,9 @@
 		9B11AD42298A3C39004A9F8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B11AD40298A3C39004A9F8E /* Main.storyboard */; };
 		9B11AD44298A3C3B004A9F8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B11AD43298A3C3B004A9F8E /* Assets.xcassets */; };
 		9B11AD47298A3C3B004A9F8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B11AD45298A3C3B004A9F8E /* LaunchScreen.storyboard */; };
+		9B11AD53298A524F004A9F8E /* CoinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B11AD52298A524F004A9F8E /* CoinManager.swift */; };
+		9B11AD55298A9C8E004A9F8E /* CoinData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B11AD54298A9C8E004A9F8E /* CoinData.swift */; };
+		9B11AD57298BA7F9004A9F8E /* CoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B11AD56298BA7F9004A9F8E /* CoinModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		9B11AD43298A3C3B004A9F8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B11AD46298A3C3B004A9F8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B11AD48298A3C3B004A9F8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B11AD52298A524F004A9F8E /* CoinManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinManager.swift; sourceTree = "<group>"; };
+		9B11AD54298A9C8E004A9F8E /* CoinData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinData.swift; sourceTree = "<group>"; };
+		9B11AD56298BA7F9004A9F8E /* CoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,50 @@
 		9B11AD39298A3C39004A9F8E /* ByteCoinApp */ = {
 			isa = PBXGroup;
 			children = (
-				9B11AD3A298A3C39004A9F8E /* AppDelegate.swift */,
-				9B11AD3C298A3C39004A9F8E /* SceneDelegate.swift */,
-				9B11AD3E298A3C39004A9F8E /* ViewController.swift */,
-				9B11AD40298A3C39004A9F8E /* Main.storyboard */,
+				9B11AD4F298A5213004A9F8E /* Delegates */,
+				9B11AD51298A5236004A9F8E /* Model */,
+				9B11AD50298A5224004A9F8E /* View */,
+				9B11AD4E298A5202004A9F8E /* Controller */,
 				9B11AD43298A3C3B004A9F8E /* Assets.xcassets */,
 				9B11AD45298A3C3B004A9F8E /* LaunchScreen.storyboard */,
 				9B11AD48298A3C3B004A9F8E /* Info.plist */,
 			);
 			path = ByteCoinApp;
+			sourceTree = "<group>";
+		};
+		9B11AD4E298A5202004A9F8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9B11AD3E298A3C39004A9F8E /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9B11AD4F298A5213004A9F8E /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				9B11AD3A298A3C39004A9F8E /* AppDelegate.swift */,
+				9B11AD3C298A3C39004A9F8E /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		9B11AD50298A5224004A9F8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9B11AD40298A3C39004A9F8E /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9B11AD51298A5236004A9F8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9B11AD52298A524F004A9F8E /* CoinManager.swift */,
+				9B11AD54298A9C8E004A9F8E /* CoinData.swift */,
+				9B11AD56298BA7F9004A9F8E /* CoinModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +179,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B11AD53298A524F004A9F8E /* CoinManager.swift in Sources */,
 				9B11AD3F298A3C39004A9F8E /* ViewController.swift in Sources */,
+				9B11AD55298A9C8E004A9F8E /* CoinData.swift in Sources */,
 				9B11AD3B298A3C39004A9F8E /* AppDelegate.swift in Sources */,
+				9B11AD57298BA7F9004A9F8E /* CoinModel.swift in Sources */,
 				9B11AD3D298A3C39004A9F8E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
