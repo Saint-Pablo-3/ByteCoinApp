@@ -13,7 +13,6 @@ protocol CoinManagerDelegate {
 }
 
 struct CoinManager {
-    //https://rest.coinapi.io/v1/exchangerate/BTC/USD?apikey=11741BA3-5E44-4E31-93F5-EC1260817B95
     
     let baseURL = "https://rest.coinapi.io/v1/exchangerate/BTC"
     let apiKey = "11741BA3-5E44-4E31-93F5-EC1260817B95"
@@ -24,7 +23,6 @@ struct CoinManager {
     
     func getCoinPrice(for currency: String) { // create an url-string
         let urlString = "\(baseURL)/\(currency)?apikey=\(apiKey)"
-     //   print(urlString)
         performRequest(with: urlString)
     }
     
@@ -37,26 +35,28 @@ struct CoinManager {
                     return
                 }
                 if let safeData = data {
-                    parseJason(coinData: safeData)
+                    if let coin = parseJason(safeData) {
+                        delegate?.didUpdateCost(self, coin: coin)
+                    }
                 }
             }
                 task.resume()
             }
     }
     
-    func parseJason(coinData: Data) -> CoinModel? {
+    func parseJason(_ coinData: Data) -> CoinModel? {
         let decoder = JSONDecoder()
         do {
             let decodeData = try decoder.decode(CoinData.self, from: coinData)
-            let currentTime = decodeData.time
+            let time = decodeData.time
             let base = decodeData.asset_id_base
-            let secondCurrency = decodeData.asset_id_quote
+            let currency = decodeData.asset_id_quote
             let rate = decodeData.rate
             
             //create an instance of CoinModel
-            let currency = CoinModel(time: currentTime, baseCurrency: base, secondCurrency: secondCurrency, rate: rate)
+            let coin = CoinModel(currentTime: time, baseCurrency: base, chooseCurrency: currency, currentRate: rate)
             print(String(format: "%.2f", decodeData.rate))
-            return currency
+            return coin
         } catch {
             delegate?.didFailWithError(error: error)
             return nil

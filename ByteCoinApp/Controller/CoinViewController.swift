@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CoinViewController: UIViewController {
     
-    @IBOutlet weak var bitcoinLabel: UILabel!
+    @IBOutlet weak var secondLabel: UILabel!
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var currencyPicker: UIPickerView!
     
@@ -21,12 +21,13 @@ class ViewController: UIViewController {
         //set View Controller as datasource and delegate of currencyPicker
         currencyPicker.dataSource = self
         currencyPicker.delegate = self
-        
+        //set View Controller as CoinManager delegate
         coinManager.delegate = self
     }
 }
 
-extension ViewController: UIPickerViewDataSource {
+//MARK: - UIPickerViewDataSource
+extension CoinViewController: UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1 // number of columns
@@ -37,7 +38,8 @@ extension ViewController: UIPickerViewDataSource {
     }
 }
 
-extension ViewController: UIPickerViewDelegate {
+//MARK: - UIPickerViewDelegate
+extension CoinViewController: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return coinManager.currencyArray[row] // return String value of array[row]'s element
@@ -45,20 +47,19 @@ extension ViewController: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        let selectedCurrency = coinManager.currencyArray[row]
+        let selectedCurrency = coinManager.currencyArray[row] 
         coinManager.getCoinPrice(for: selectedCurrency)
-
     }
 }
 
-extension ViewController: CoinManagerDelegate {
+//MARK: - CoinManagerDelegate
+extension CoinViewController: CoinManagerDelegate {
     
     func didUpdateCost(_ coinManager: CoinManager, coin: CoinModel) {
         DispatchQueue.main.async {
             self.currencyLabel.text = coin.rateString
-            
+            self.secondLabel.text = coin.chooseCurrency
         }
-        
     }
     
     func didFailWithError(error: Error) {

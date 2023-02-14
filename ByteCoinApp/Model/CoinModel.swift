@@ -7,13 +7,14 @@
 
 import UIKit
 
+// protocol model
 struct CoinModel {
-    let time: String
+    let currentTime: String
     let baseCurrency: String
-    let secondCurrency: String
-    let rate: Double
+    let chooseCurrency: String
+    let currentRate: Double
     
     var rateString: String {
-        return String(format: "%.2f", rate)
+        return String(format: "%.2f", currentRate)
     }
 }
